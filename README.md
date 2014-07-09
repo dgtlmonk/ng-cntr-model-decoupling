@@ -1,7 +1,7 @@
 Rethinking ngController
 ========================
 
-A neat way do decouple controller and model. It's a good practice to free the controller from any data. Based on http://toddmotto.com/rethinking-angular-js-controllers/ with few syntax changes.
+A better way to decouple controller and model. It's a good practice to free the controller from any data. Based on http://toddmotto.com/rethinking-angular-js-controllers/ with few syntax changes.
 
 =====
 Important Notes
