@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body ng-app='apc'>
+        <div class="layout" ng-controller='apcCtrl'>
+            <div class="container" style='width:50px;height:50px;background:#444;' ng-click="say('Hello Baz!')"></div>
+        </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+         (function(){
+         "use strict";
+            var app = angular.module('apc',[]);
+            
+            app.factory('MyFactory', function (){
+               var factory = {};
+                   factory.data = [
+                               { name:'Joel', age :"30"},
+                               { name:'John', age :"20"},
+                               { name:'Jack', age :"32"}
+                               ];
+
+                    factory.testMethod = function() {
+                            console.log('@factory.testMethod');
+                    }
+
+                    factory.say = function (msg) {
+                        console.log('@factory.says: ' + msg);
+                        }
+                    /*
+                    We may also create a method that returns a promise like so:
+                    factory.getData = function() {
+                        return $http.get('endpointPATH')
+                                .success( function (data ){
+                                factory.data = data;
+                                })
+                                .error( function(){
+                                    NotificationFactory.showError();
+                                })
+                    }
+                       */
+               return factory;
+            });
+
+            app.controller('apcCtrl',['$scope','MyFactory', function($scope, MyFactory){
+                // console.log(MyFactory);
+                    $scope.data = MyFactory.data;
+                    $scope.testMethod = MyFactory.testMethod;
+                    $scope.say = MyFactory.say;
+
+                }]);
+         })();
+
+     </script>
+    </body>
+</html>
+
